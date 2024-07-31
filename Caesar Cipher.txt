@@ -1,4 +1,4 @@
-# Caesar Cipher Tutorial
+# Caesar Cipher
 # Shift value: 3
 
 # Basic requirements:
