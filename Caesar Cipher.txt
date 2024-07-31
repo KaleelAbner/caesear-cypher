@@ -1,0 +1,44 @@
+# Caesar Cipher Tutorial
+# Shift value: 3
+
+# Basic requirements:
+# 1. A string of the alphabet (for reference)
+# 2. Functions to encrypt and decrypt
+# 3. Ability to handle both uppercase and lowercase letters
+# 4. Preserve non-alphabetic characters (spaces, punctuation)
+
+# Our reference alphabet
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+def encrypt(message, shift=3):
+    """Encrypt a message using Caesar cipher with a shift of 3."""
+    encrypted_message = ""
+    for char in message:
+        if char.isalpha():
+            # Find the character's position in the alphabet
+            char_index = alphabet.index(char.upper())
+            # Apply the shift
+            new_index = (char_index + shift) % 26
+            # Get the new character
+            new_char = alphabet[new_index]
+            # Preserve the original case
+            encrypted_message += new_char if char.isupper() else new_char.lower()
+        else:
+            # Keep non-alphabetic characters as they are
+            encrypted_message += char
+    return encrypted_message
+
+def decrypt(encrypted_message, shift=3):
+    """Decrypt a message encrypted with Caesar cipher (shift of 3)."""
+    # To decrypt, we use the same function but with a negative shift
+    return encrypt(encrypted_message, -shift)
+
+# Example usage
+original_message = "Hello, World! This is a secret message."
+print(f"Original message: {original_message}")
+
+encrypted = encrypt(original_message)
+print(f"Encrypted message: {encrypted}")
+
+decrypted = decrypt(encrypted)
+print(f"Decrypted message: {decrypted}")
